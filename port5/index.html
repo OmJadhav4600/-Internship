@@ -1,0 +1,51 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">Weather Forecast</div>
+        <ul>
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="forecast.html" class="nav-link">Forecast</a></li>
+            <li><a href="map.html" class="nav-link">Map</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home-section">
+        <h1>Current Weather</h1>
+        <div id="location-search">
+            <input type="text" id="city" placeholder="Enter city" aria-label="Enter city name">
+            <button onclick="getWeatherData()">Get Weather</button>
+        </div>
+
+        <div id="weather-info">
+            <div id="weather-icon"></div>
+            <div id="weather-details">
+                <p id="temp">Temperature: --°C</p>
+                <p id="condition">Condition: --</p>
+                <p id="humidity">Humidity: --%</p>
+                <p id="wind">Wind: -- km/h</p>
+                <div id="smiley"></div>
+            </div>
+        </div>
+
+        <!-- 7-Day Forecast Chart -->
+        <canvas id="forecast-chart" width="400" height="200"></canvas>
+    </section>
+
+    <footer>
+        <p>Developed by Om Jadhav &copy; 2025</p>
+    </footer>
+</body>
+</html>

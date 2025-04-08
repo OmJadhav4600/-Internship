@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #4facfe, #00f2fe);
+            color: #333;
+            text-align: center;
+        }
+        header {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            color: white;
+            font-size: 2rem;
+        }
+        .container {
+            margin-top: 50px;
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .container input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .container button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .container button:hover {
+            background-color: #0056b3;
+        }
+        .weather-result {
+            margin-top: 20px;
+        }
+        .weather-result h2 {
+            font-size: 2rem;
+            color: #007bff;
+        }
+        .weather-result p {
+            font-size: 1.2rem;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>Weather Forecast</header>
+    <div class="container">
+        <h1>Enter City Name</h1>
+        <input type="text" id="city" placeholder="e.g., New York" />
+        <button onclick="getWeather()">Get Weather</button>
+
+        <div class="weather-result" id="weatherResult" style="display: none;">
+            <h2 id="cityName"></h2>
+            <p><strong>Temperature:</strong> <span id="temperature"></span>&deg;C</p>
+            <p><strong>Description:</strong> <span id="description"></span></p>
+            <p><strong>Humidity:</strong> <span id="humidity"></span>%</p>
+            <p><strong>Wind Speed:</strong> <span id="windSpeed"></span> km/h</p>
+        </div>
+    </div>
+
+    <script>
+        async function getWeather() {
+            const city = document.getElementById('city').value;
+
+            if (!city) {
+                alert('Please enter a city name');
+                return;
+            }
+
+            try {
+                const response = await fetch(`http://localhost:5000/weather?city=${city}`);
+                if (!response.ok) {
+                    throw new Error('City not found');
+                }
+
+                const data = await response.json();
+                document.getElementById('weatherResult').style.display = 'block';
+                document.getElementById('cityName').innerText = data.city;
+                document.getElementById('temperature').innerText = data.temperature;
+                document.getElementById('description').innerText = data.description;
+                document.getElementById('humidity').innerText = data.humidity;
+                document.getElementById('windSpeed').innerText = data.windSpeed;
+            } catch (error) {
+                alert(error.message);
+            }
+        }
+    </script>
+</body>
+</html>

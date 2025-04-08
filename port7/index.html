@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Sharing Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to bottom, #ffffff, #f2f4f5);
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #2c3e50;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ecf0f1;
+            animation: fadeInLeft 1s ease;
+        }
+
+        .navbar a {
+            color: #bdc3c7;
+            font-size: 16px;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #ecf0f1;
+        }
+
+        .container {
+            margin: 40px auto;
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            animation: fadeInDown 1.2s ease;
+        }
+
+        .header h1 {
+            font-size: 42px;
+            color: #2c3e50;
+        }
+
+        .header p {
+            font-size: 18px;
+            color: #7f8c8d;
+        }
+
+        .card {
+            background: #ffffff;
+            border: 1px solid #dcdde1;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary {
+            background: #3498db;
+            border: none;
+            padding: 10px 15px;
+            color: #fff;
+            font-size: 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #2980b9;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #bdc3c7;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: #ecf0f1;
+            border: 1px solid #bdc3c7;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            font-size: 16px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .file-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .file-item i {
+            color: #3498db;
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        .file-item a {
+            background: #27ae60;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .file-item a:hover {
+            background: #1e8449;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <span class="navbar-brand">DocShare</span>
+            <a href="#uploadForm">Upload</a>
+            <a href="#browseFiles">Browse</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <h1>Welcome to DocShare</h1>
+            <p>Your go-to platform for sharing and managing documents.</p>
+        </div>
+        <div class="card" id="uploadForm">
+            <h2>Upload a Document</h2>
+            <form id="fileUploadForm" enctype="multipart/form-data">
+                <input type="file" id="fileUpload" name="file">
+                <button type="submit" class="btn-primary">Upload</button>
+            </form>
+        </div>
+        <div class="card" id="browseFiles">
+            <h2>Search Documents</h2>
+            <input type="text" id="searchInput" placeholder="Type to search...">
+        </div>
+        <div class="card">
+            <h2>Uploaded Files</h2>
+            <div id="fileList">
+                <p>No files uploaded yet.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 DocShare. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const uploadForm = document.getElementById('fileUploadForm');
+        const fileList = document.getElementById('fileList');
+        const searchInput = document.getElementById('searchInput');
+
+        const uploadedFiles = [];
+
+        uploadForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const fileInput = document.getElementById('fileUpload');
+            if (fileInput.files.length === 0) {
+                alert('Please select a file to upload.');
+                return;
+            }
+
+            const file = fileInput.files[0];
+            const fileUrl = URL.createObjectURL(file); // Create a temporary URL for the file
+            uploadedFiles.push({ name: file.name, url: fileUrl });
+            renderFileList();
+            fileInput.value = '';
+        });
+
+        function renderFileList(searchTerm = '') {
+            fileList.innerHTML = '';
+
+            const filteredFiles = uploadedFiles.filter(file =>
+                file.name.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+
+            if (filteredFiles.length === 0) {
+                fileList.innerHTML = '<p>No files found.</p>';
+                return;
+            }
+
+            filteredFiles.forEach(file => {
+                const fileItem = document.createElement('div');
+                fileItem.className = 'file-item';
+                fileItem.innerHTML = `
+                    <span><i class="fas fa-file"></i>${file.name}</span>
+                    <a href="${file.url}" target="_blank">Open</a>
+                `;
+                fileList.appendChild(fileItem);
+            });
+        }
+
+        searchInput.addEventListener('input', (e) => {
+            renderFileList(e.target.value);
+        });
+    </script>
+</body>
+</html>

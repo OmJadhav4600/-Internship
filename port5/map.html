@@ -1,0 +1,67 @@
+<!-- map.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Map</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=9a9dabf62d60be5637a0dc6f98cad0a9&callback=initMap" async defer></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">Weather Forecast</div>
+        <ul>
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="forecast.html" class="nav-link">Forecast</a></li>
+            <li><a href="map.html" class="nav-link">Map</a></li>
+        </ul>
+    </nav>
+
+    <!-- Map Section -->
+    <section id="map-section">
+        <h1>Weather Map</h1>
+        <div id="map" style="width: 100%; height: 500px;"></div>
+    </section>
+
+    <footer>
+        <p>Developed by Om Jadhav &copy; 2025</p>
+    </footer>
+
+    <script>
+        function initMap() {
+            const map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 51.5074, lng: -0.1278 }, // Default center (London)
+                zoom: 5,
+            });
+
+            // Example: Add a marker with weather data for a city
+            const weatherMarker = new google.maps.Marker({
+                position: { lat: 51.5074, lng: -0.1278 }, // London
+                map: map,
+                title: "London",
+            });
+
+            fetch(`https://api.openweathermap.org/data/2.5/weather?q=London&appid=${apiKey}&units=metric`)
+                .then(response => response.json())
+                .then(data => {
+                    const contentString = `
+                        <div><strong>${data.name}</strong><br>
+                        Temperature: ${data.main.temp}°C<br>
+                        Condition: ${data.weather[0].description}</div>
+                    `;
+                    const infoWindow = new google.maps.InfoWindow({
+                        content: contentString,
+                    });
+
+                    weatherMarker.addListener('click', () => {
+                        infoWindow.open(map, weatherMarker);
+                    });
+                })
+                .catch(error => console.error('Error fetching weather data:', error));
+        }
+    </script>
+</body>
+</html>

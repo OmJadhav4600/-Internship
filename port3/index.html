@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Details Form</title>
+  <style>
+    /* Body styling with background gradient and centering */
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      color: #fff;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      animation: backgroundAnimation 6s infinite alternate;
+    }
+
+    /* Keyframes for background color animation */
+    @keyframes backgroundAnimation {
+      from {
+        background: linear-gradient(to right, #6a11cb, #2575fc);
+      }
+      to {
+        background: linear-gradient(to right, #ff7e5f, #feb47b);
+      }
+    }
+
+    /* Container styling for the form */
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px 30px;
+      border-radius: 10px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      width: 350px;
+    }
+
+    /* Title styling with animation */
+    .title {
+      font-size: 24px;
+      margin-bottom: 20px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    /* Keyframes for title fade-in effect */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Input and button animation */
+    input, button {
+      margin-top: 10px;
+      animation: inputAnimation 2s ease-in-out;
+    }
+
+    /* Keyframes for input fields' scale animation */
+    @keyframes inputAnimation {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Button styling */
+    button {
+      background-color: #2575fc;
+      border: none;
+      padding: 10px 20px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    /* Disabled button styling */
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    /* Form group styling for spacing */
+    .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    /* Label styling */
+    label {
+      display: block;
+      font-size: 16px;
+    }
+
+    /* Input field styling */
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Form container -->
+  <div class="container">
+    <h1 class="title">Personal Details Form</h1>
+    <!-- Form element with the ID "detailsForm" -->
+    <form id="detailsForm">
+      <!-- Name input field -->
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <!-- College input field -->
+      <div class="form-group">
+        <label for="college">College</label>
+        <input type="text" id="college" name="college" required>
+      </div>
+      <!-- Branch input field -->
+      <div class="form-group">
+        <label for="branch">Branch</label>
+        <input type="text" id="branch" name="branch" required>
+      </div>
+      <!-- Blood Group input field -->
+      <div class="form-group">
+        <label for="bloodGroup">Blood Group</label>
+        <input type="text" id="bloodGroup" name="bloodGroup" required>
+      </div>
+      <!-- Phone number input field -->
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" required>
+      </div>
+      <!-- Email input field -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <!-- Age input field -->
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input type="number" id="age" name="age" required>
+      </div>
+      <!-- Birthdate input field -->
+      <div class="form-group">
+        <label for="birthdate">Birthdate</label>
+        <input type="date" id="birthdate" name="birthdate" required>
+      </div>
+      <!-- Aadhar Number input field -->
+      <div class="form-group">
+        <label for="adharNo">Aadhar Number</label>
+        <input type="text" id="adharNo" name="adharNo" required>
+      </div>
+      <!-- Submit button -->
+      <button type="submit" class="submit-btn">Submit</button>
+
+      <!-- WhatsApp Chat Button -->
+      <a href="https://wa.me/+917823868937" target="_blank">
+        <button type="button">Send via WhatsApp</button>
+      </a>
+    </form>
+  </div>
+
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+<script>
+  // Initialize EmailJS with your user ID (replace with your actual user ID)
+ 
+    emailjs.init("jadhavom4600@gmail.com"); // Replace with your EmailJS user ID
+  
+  
+    // Event listener for form submission
+    document.getElementById('detailsForm').addEventListener('submit', async function (e) {
+      e.preventDefault(); // Prevent default form submission
+
+      // Collect form data using FormData API
+      const formData = new FormData(this);
+      const submitButton = document.querySelector('button[type="submit"]');
+      submitButton.disabled = true; // Disable submit button to prevent multiple submissions
+
+      try {
+        // Step 1: Send form data to the server using fetch
+        const response = await fetch('/submit', {
+          method: 'POST',
+          body: formData,
+        });
+
+        if (response.ok) {
+          alert('Form submitted successfully!');
+          this.reset(); // Reset the form fields
+
+          // Step 2: Send email using EmailJS
+          const emailResponse = await emailjs.sendForm('service_yourServiceID', 'template_yourTemplateID', this);
+
+          if (emailResponse.status === 200) {
+            // Step 3: Prepare WhatsApp message with form data
+            let message = 'Personal Details Form Submitted:\n\n';
+            for (const [key, value] of formData.entries()) {
+              message += `${key}: ${value}\n`;
+            }
+
+            // Encode the message for WhatsApp and open the link
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/+917823868937?text=${encodedMessage}`;
+            window.open(whatsappURL, '_blank');
+          } else {
+            alert('Error submitting form. Please try again.');
+          }
+        } else {
+          const errorText = await response.text();
+          console.error('Server Error:', response.status, errorText);
+          alert(`Error ${response.status}: Unable to submit form. ${errorText}`);
+        }
+      } catch (error) {
+        console.error('Error during form submission:', error);
+        alert('An error occurred. Please try again later.');
+      } finally {
+        submitButton.disabled = false; // Re-enable the submit button after request completion
+      }
+    });
+    
+
+    // WhatsApp button functionality
+    document.getElementById('whatsappBtn').addEventListener('click', async function () {
+      const formData = new FormData(document.getElementById('detailsForm'));
+
+      // Prepare WhatsApp message with form data
+      let message = 'Personal Details Form Submitted:\n\n';
+      for (const [key, value] of formData.entries()) {
+        message += `${key}: ${value}\n`;
+      }
+
+      // Encode the message for WhatsApp and open the link
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappURL = `https://wa.me/+917823868937?text=${encodedMessage}`;
+      window.open(whatsappURL, '_blank');
+    });
+  </script>
+</body>
+</html>
