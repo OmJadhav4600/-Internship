@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Blog Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="sticky-header">
+        <nav>
+            <div class="logo">MyBlog</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#blog-grid">Blog</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#newsletter">Newsletter</a></li>
+            </ul>
+            <div class="search-icon" onclick="toggleSearch()">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Search...">
+                <button onclick="searchPosts()">Go</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <h1>Welcome to Our Blog</h1>
+            <p>Discover the latest trends and insights.</p>
+            <button class="cta-button" onclick="scrollToSection('blog-grid')">Read Our Latest Articles</button>
+        </div>
+    </section>
+
+    <!-- Blog Post Grid Section -->
+    <section id="blog-grid" class="blog-grid-section">
+        <h2>Latest Blog Posts</h2>
+        <div class="category-filters">
+            <button class="filter-btn active" data-category="all">All</button>
+            <button class="filter-btn" data-category="tech">Technology</button>
+            <button class="filter-btn" data-category="lifestyle">Lifestyle</button>
+            <button class="filter-btn" data-category="health">Health</button>
+        </div>
+        <div class="grid-container">
+            <div class="blog-card" data-category="tech">
+                <img src="https://via.placeholder.com/300x200" alt="Blog Thumbnail">
+                <h3>Tech Trends 2024</h3>
+                <p class="date">January 15, 2024</p>
+                <p class="excerpt">Discover what's shaping the future of technology.</p>
+                <button class="read-more">Read More</button>
+            </div>
+            <div class="blog-card" data-category="lifestyle">
+                <img src="https://via.placeholder.com/300x200" alt="Blog Thumbnail">
+                <h3>Minimalist Living Tips</h3>
+                <p class="date">February 8, 2024</p>
+                <p class="excerpt">How to declutter your life and embrace minimalism.</p>
+                <button class="read-more">Read More</button>
+            </div>
+            <div class="blog-card" data-category="health">
+                <img src="https://via.placeholder.com/300x200" alt="Blog Thumbnail">
+                <h3>Healthy Eating Habits</h3>
+                <p class="date">March 2, 2024</p>
+                <p class="excerpt">Improve your diet with these easy tips.</p>
+                <button class="read-more">Read More</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <h2>About Us</h2>
+        <p>Welcome to MyBlog, your go-to destination for the latest insights on technology, lifestyle, and health. Our mission is to provide high-quality content that informs, educates, and inspires.</p>
+        <p>We believe in the power of knowledge and the impact of sharing valuable information. Stay with us to explore trending topics and expert opinions from different industries.</p>
+    </section>
+
+    <!-- Newsletter Signup Section -->
+    <section id="newsletter" class="newsletter-section">
+        <div class="newsletter-content">
+            <h2>Stay Updated with Our Latest Posts</h2>
+            <form>
+                <input type="email" placeholder="Enter your email">
+                <button type="submit" class="subscribe-btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer id="contact">
+        <div class="footer-column">
+            <h4>Contact Us</h4>
+            <p>Email: support@myblog.com</p>
+            <p>Phone: +1 234 567 890</p>
+            <p>Address: 123 Blog Street, New York, NY</p>
+        </div>
+        <div class="footer-column">
+            <h4>Follow Us</h4>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 MyBlog. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

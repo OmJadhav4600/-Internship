@@ -1,0 +1,139 @@
+/* General Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #ffffff, #f0f4f8);
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* Navbar Styling */
+.navbar {
+    background: linear-gradient(90deg, #007bff, #6610f2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.7rem;
+    color: #fff !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.1rem;
+    margin: 0 15px;
+    color: #e9ecef !important;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffc107 !important;
+    transform: scale(1.1);
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+    background: linear-gradient(to bottom, #007bff, #6610f2);
+    color: #fff;
+    clip-path: ellipse(140% 90% at 50% 20%);
+    margin-bottom: 50px;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+}
+
+.hero p {
+    font-size: 1.3rem;
+    color: #f8f9fa;
+    margin-bottom: 30px;
+}
+
+/* Countdown Timer */
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 50px 0;
+}
+
+.countdown-item {
+    text-align: center;
+    width: 90px;
+    background: linear-gradient(135deg, #007bff, #6610f2);
+    color: #fff;
+    border-radius: 10px;
+    padding: 20px 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+}
+
+.countdown-item:hover {
+    transform: translateY(-5px);
+}
+
+.countdown-item .number {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.countdown-item .label {
+    font-size: 0.9rem;
+    color: #e9ecef;
+    margin-top: 5px;
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(to right, #333, #555);
+    color: #f8f9fa;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer a {
+    color: #ffc107;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.4rem;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .countdown-item {
+        width: 70px;
+        padding: 15px;
+    }
+
+    .countdown-item .number {
+        font-size: 2rem;
+    }
+}
