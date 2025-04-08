@@ -1,0 +1,145 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fb;
+    color: #2d2d2d;
+    margin: 0;
+    padding: 0;
+    transition: all 0.3s ease;
+  }
+  
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 240px;
+    background-color: #4a90e2;
+    padding: 20px;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+  }
+  
+  nav .nav-link {
+    color: white;
+    font-size: 1.1em;
+    margin: 12px 0;
+    padding: 12px;
+    border-radius: 5px;
+    text-align: center;
+    display: block;
+    transition: all 0.3s ease;
+  }
+  
+  nav .nav-link:hover {
+    background-color: #0074cc;
+    transform: translateX(5px);
+  }
+  
+  .content-wrapper {
+    margin-left: 270px;
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+  }
+  
+  header {
+    background-color: #f1f7fc;
+    color: #4a90e2;
+    border-bottom: 4px solid #0074cc;
+    padding: 40px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  header h1 {
+    font-size: 3rem;
+    transition: transform 0.3s ease;
+  }
+  
+  header h1:hover {
+    transform: scale(1.05);
+  }
+  
+  
+  section {
+    padding: 50px 20px;
+  }
+  
+  .gallery img {
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+  }
+  
+  .gallery img:hover {
+    transform: scale(1.1) rotate(5deg);
+  }
+  
+  .card {
+    border: none;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+  }
+  
+  .card:hover {
+    transform: translateY(-12px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card h3 {
+    color: #0074cc;
+  }
+  
+  .btn-primary {
+    background-color: #4a90e2;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0074cc;
+    color: #ffffff;
+    transform: scale(1.1);
+  }
+  
+  .footer {
+    background-color: #f1f7fc;
+    color: #0074cc;
+    text-align: center;
+    padding: 20px 0;
+    border-top: 4px solid #0074cc;
+  }
+  
+  @media (max-width: 768px) {
+    nav {
+      position: relative;
+      width: 100%;
+      height: auto;
+      border-right: none;
+      border-bottom: 2px solid #e3e6ea;
+    }
+  
+    .content-wrapper {
+      margin-left: 0;
+    }
+  }
+    .animate-on-load {
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 1s forwards;
+  }
+  
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
