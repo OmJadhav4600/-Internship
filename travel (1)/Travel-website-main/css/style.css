@@ -1,0 +1,44 @@
+:root {
+  --red: #FF725E;
+  --blue: #407BFF;
+  --blue-light: #407bff1a;
+  --green: #92E3A9;
+  --white: #FFFFFF;
+  --black: #000000;
+}
+
+
+.btn-blue {
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+.btn:hover {
+    outline: 1px solid var(--blue);
+}
+
+.blue-icon {
+    color: var(--blue);
+}
+
+.rating i {
+    color: var(--red);
+}
+
+.review-box {
+    border: 1px solid var(--blue);
+    position: relative;
+}
+
+.reviewer-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 1px solid tan;
+    background-color: whitesmoke;
+    object-fit: cover;
+    position: absolute;
+    left: 50%;
+    top: 0%;
+    transform: translate(-50%, -50%);
+}
